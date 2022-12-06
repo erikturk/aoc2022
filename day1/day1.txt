@@ -1,1 +1,21 @@
+current_top_three = [0,0,0]
+
+f = open('day1.txt',"r")
+current_elf=0
+for line in f:
+	
+	
+	if line != "\n":
+		current_elf = current_elf + int(line)
+	else:
+		if any( current_elf > x for x in current_top_three):
+			# add x to list, sort, then take top three as new list
+			current_top_three.append(current_elf)
+			current_top_three.sort(reverse=True)
+			current_top_three = current_top_three[:3]
+		  
+		current_elf = 0
+
+print(current_top_three[0])			
+print(sum(current_top_three))
 
